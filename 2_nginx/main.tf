@@ -1,10 +1,10 @@
 provider "docker" {
-  version = "~> 1.1"
+  version = "~> 2.0"
   host = "tcp://${var.docker_host_ip}:${var.docker_host_port}/"
 }
 
 provider "null" {
-  version = "~> 1.0"
+  version = "~> 2.1"
 }
 
 resource "docker_image" "nginx" {

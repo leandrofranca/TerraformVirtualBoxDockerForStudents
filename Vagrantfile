@@ -27,13 +27,12 @@ Vagrant.configure("2") do |config|
     echo '[Service]' >> /etc/systemd/system/docker.service.d/docker.conf
     echo 'ExecStart=' >> /etc/systemd/system/docker.service.d/docker.conf
     echo 'ExecStart=/usr/bin/dockerd -H tcp://0.0.0.0:2375 -H unix://var/run/docker.sock' >> /etc/systemd/system/docker.service.d/docker.conf
-    yum install -y yum-utils device-mapper-persistent-data lvm2
-    yum-config-manager --add-repo https://download.docker.com/linux/centos/docker-ce.repo
-    yum install -y docker-ce
-    yum install -y git
-    systemctl start docker
-    systemctl daemon-reload
-    systemctl restart docker.service
-    systemctl enable docker
   EOF
+
+  config.vm.provision :ansible do |ansible|
+    ansible.compatibility_mode = "2.0"
+    ansible.playbook = "Docker/main.yml"
+    ansible.inventory_path = "Docker/inventory"
+    ansible.become = true
+  end
 end

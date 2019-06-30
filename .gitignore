@@ -1,0 +1,5 @@
+.terraform/
+.vagrant/
+*.tfstate*
+Docker/inventory
+terraform.tfvars
