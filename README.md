@@ -17,7 +17,7 @@ The following items are needed to create the VM automatically with Vagrant:
 * Terraform (Version v0.11.10)
 * Internet access
 
-**Note:** it's possible to use Windows, but the `get_vm_info.sh` file, used in step 2, needs to be altered.
+**Note:** it's possible to use Windows, but the `get_vm_info_terraform_tfvars.sh` file, used in step 2, needs to be altered.
 The line endings do not match with those of Windows. Or you can just add the correct information to the `terraform.tfvars` file by hand.
 
 #### 1. Create the virtual machine
@@ -35,7 +35,8 @@ This will bring up a CentOS 7 machine and installs Docker and prepares it for th
 The root directory contains the `terraform.tfvars` file. Each example needs the same information and it will be stored inside this file. A convenient bash script extracts the values form Vagrant. Redirect the output of this script to the file before running any example.
 
 ```bash
-$ ./get_vm_info.sh > terraform.tfvars
+$ ./get_vm_info_terraform_tfvars.sh > terraform.tfvars
+$ ./get_vm_info_ansible_inventory.sh > Docker/inventory
 ```
 **Remark:** It's recommended to view the contents of both files, after running the script. By doing so, a decent understanding is acquired.
 
